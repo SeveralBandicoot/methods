@@ -1,10 +1,24 @@
+/*
+
+Methods 
+
+11/25/24
+
+@ AJ Enrique Arguello 
+
+Objectives: Create 3 Methods, one for each Traversal 
+
+Create a video explaining and demonstrating your program
+
+*/
+
 #include <iostream>
 using namespace std;
 
-struct node {
+struct node { // node structure
   int data;
-  struct node* left;
-  struct node* right;
+  struct node* left; // pointer to left child 
+  struct node* right; // pointer to right child 
 };
 
 struct node* newNode(int idata) {
@@ -15,7 +29,7 @@ struct node* newNode(int idata) {
   return node;
 }
 
-void preOrderDisplay(struct node* root) {
+void preOrderDisplay(struct node* root) { // pre-order structure 
   if (root == nullptr) {
     return;
   }
@@ -24,7 +38,7 @@ void preOrderDisplay(struct node* root) {
   preOrderDisplay(root->right);
 }
 
-void inOrderDisplay(struct node* root) {
+void inOrderDisplay(struct node* root) { // in-order structure
   if (root == nullptr) {
     return;
   }
@@ -33,7 +47,7 @@ void inOrderDisplay(struct node* root) {
   inOrderDisplay(root->right);
 }
 
-void postOrderDisplay(struct node* root) {
+void postOrderDisplay(struct node* root) {  // post-order structure 
   if (root==nullptr) {
     return;
   }
@@ -43,12 +57,12 @@ void postOrderDisplay(struct node* root) {
 }
 
 int main() {
-  struct node* root = newNode(9);
+  struct node* root = newNode(9); // insert numbers into nodes 
   root->left = newNode(8);
   root->right = newNode(3);
   root->left->left = newNode(4);
   
-  // Display tree
+  // display tree
   cout << "Pre-Order Traversal" << endl;
   preOrderDisplay(root);
 
@@ -62,9 +76,7 @@ int main() {
   cout << "Post-Order Traversal" << endl;
   postOrderDisplay(root);  
   
-  // Access and print specific data
-
-  // Free allocated memory (good practice)
+  // free allocated memory 
   delete root->left->left;
   delete root->left;
   delete root->right;
